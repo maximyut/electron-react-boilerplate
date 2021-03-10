@@ -1,0 +1,45 @@
+appId: com.test.app
+copyright: Example co
+productName: test
+
+asar: true
+
+directories:
+#  app: build/
+ buildResources: build/
+ output: release/
+
+extends: null
+
+files:
+ - package.json
+ - public/main/main.js
+ - build/**/*
+ - assets/
+ - node_modules/
+
+dmg:
+ contents:
+  - type: link
+    path: /Applications
+    x: 410
+    y: 150
+  - type: file
+    x: 130
+    y: 150
+
+mac:
+ target: dmg
+ category: public.app-category.tools
+
+win:
+ target: nsis
+
+nsis:
+ oneClick: "false"
+ allowToChangeInstallationDirectory: "true"
+
+linux:
+ target:
+  - deb
+  - AppImage
